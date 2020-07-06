@@ -1,11 +1,15 @@
 package parser;
 
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -13,6 +17,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class Parser {
     //ссылка на sih
@@ -140,17 +148,16 @@ public class Parser {
 
         //проходимся циклом по полученным элементам
         for (int i = 0; i < pageCounter; i++) {
-            FluentWait<WebDriver> wait = new WebDriverWait(browserDriver, 20)
-                    .ignoring(StaleElementReferenceException.class, ElementNotVisibleException.class);
+            Wait<WebDriver> wait = new WebDriverWait(browserDriver, 20);
 
             //кликам "получить все float"
             //WebElement getAllFloatButton = browserDriver.findElement(By.xpath("//a[@id='allfloatbutton']"));
 
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@id='allfloatbutton']")));
 
-            browserDriver.findElement(By.xpath("//a[@id='allfloatbutton']")).click();
-
             List<WebElement> dataList = browserDriver.findElements(By.xpath("//div[@class='float_data']/div[@class='itemseed']/span[@class='value']"));
+
+            browserDriver.findElement(By.xpath("//a[@id='allfloatbutton']")).click();
 
             System.out.println("Элементов на странице " + dataList.size());
 
@@ -160,7 +167,7 @@ public class Parser {
 
             try{
                 //получаем кнопку "далее"
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='searchResults_btn_next']")));
+                //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='searchResults_btn_next']")));
                 List<WebElement> nextButton = browserDriver.findElements(By.xpath("//span[@id='searchResults_btn_next']"));
 
                 //Если кнопка "далее" существует, то тыкаем по ней

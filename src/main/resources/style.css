@@ -1,0 +1,85 @@
+/*.root{
+    *//*-fx-background: linear-gradient(#e66465, #9198e5);
+
+    -fx-background: radial-gradient(circle, rgba(116,108,242,1) 0%, rgba(116,116,250,1) 26%, rgba(0,212,255,1) 100%);
+
+    -fx-background: linear-gradient(90deg, rgba(116,108,242,1) 0%, rgba(116,116,250,1) 26%, rgba(0,212,255,1) 100%);*//*
+
+    *//*-fx-background: linear-gradient(#eeaeca 0%, #94bbe9 100%);*//*
+
+    -fx-background: linear-gradient(to right top, #000000 0%, #5ca4c9 70%, #379fe3 100%);
+}*/
+
+.main_pane{
+    -fx-background: linear-gradient(to right top, #000000 0%, #5ca4c9 70%, #379fe3 100%);
+}
+
+
+.find_text_field{
+    -fx-background: #FFF;
+    -fx-color: #333;
+    -fx-background-radius: 0;
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border: gone;
+    -fx-width: 90%;
+    -fx-display: block;
+}
+
+.find_text_field: placeholder-shown{
+    -fx-opacity: 0;
+    -fx-visibility: hidden;
+    -fx-background: #FFF;
+}
+
+.find_button{
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-background: none;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.find_button: hover{
+    -fx-background: none;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+/* Йбобаная рамка так и не убралась, когда поле в фокусе */
+
+.scroll_pane{
+    -fx-focus-color: transparent;
+    -fx-border: none;
+    -fx-border-color:none;
+    -fx-background: #FFF;
+}
+
+.scroll_pane: focused{
+    -fx-focus-color: transparent;
+    -fx-border: none;
+    -fx-border-color:none;
+    -fx-background: #FFF;
+}
+
+.logs_field{
+    -fx-focus-color: transparent;
+    -fx-border: none;
+    -fx-border-color:none;
+    -fx-background: #FFF;
+}
+
+.logs_field: focused{
+    -fx-focus-color: transparent;
+    -fx-border: none;
+    -fx-border-color: none;
+    -fx-background: #FFF;
+}
+
+/* Теперь убралась */
+.logs_field:focused .content{
+     -fx-background-color: transparent, white, transparent, white;
+}
+
+.label{
+    -fx-text-fill: #261d66;
+}
